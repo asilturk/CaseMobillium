@@ -22,7 +22,7 @@ class MovieSliderView: UIView {
     private let scrollView: UIScrollView = {
         let view = UIScrollView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemOrange
+        view.backgroundColor = .clear
 
         return view
     }()
@@ -55,6 +55,7 @@ class MovieSliderView: UIView {
         didSet {
             layoutSubviews()
             pageControl.numberOfPages = modelArray?.count ?? 0
+            updateTitleLabel()
         }
     }
 
@@ -71,11 +72,16 @@ class MovieSliderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setScrollDelegate() {
+}
+
+// MARK: - Auxiliary Methods
+extension MovieSliderView {
+
+    private func setScrollDelegate() {
         scrollView.delegate = self
     }
 
-    func setSubviews() {
+    private func setSubviews() {
         addSubview(scrollView)
         addSubview(pageControl)
         addSubview(titleLabel)
@@ -97,6 +103,7 @@ class MovieSliderView: UIView {
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
             titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
+            titleLabel.heightAnchor.constraint(equalToConstant: 20)
 
         ])
 
@@ -105,8 +112,7 @@ class MovieSliderView: UIView {
     private func configureScrollView() {
         guard let modelArray = modelArray else { return }
 
-        scrollView.contentSize = CGSize(width: frame.size.width * CGFloat(modelArray.count),
-                                        height: scrollView.frame.size.height)
+        scrollView.contentSize = CGSize(width: frame.size.width * CGFloat(modelArray.count), height: scrollView.frame.size.height)
 
         for (index, model) in modelArray.enumerated() {
             let imageView = UIImageView(frame: CGRect(x: CGFloat(index) * frame.size.width,
@@ -129,8 +135,15 @@ class MovieSliderView: UIView {
     @objc private func pageControlDidChange(_ sender: UIPageControl) {
         let current = sender.currentPage
         scrollView.setContentOffset(CGPoint(x: CGFloat(current) * frame.size.width, y: 0), animated: false)
+        updateTitleLabel(for: current)
     }
-    
+
+    private func updateTitleLabel(for index: Int = 0) {
+        UIView.animate(withDuration: 0.2) {
+            self.titleLabel.text = self.modelArray?[index].title
+        }
+    }
+
 }
 
 // MARK: - UIScrollViewDelegate
@@ -138,5 +151,6 @@ class MovieSliderView: UIView {
 extension MovieSliderView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         pageControl.currentPage = Int(Float(scrollView.contentOffset.x) / Float(scrollView.frame.size.width))
+        updateTitleLabel(for: pageControl.currentPage)
     }
 }
