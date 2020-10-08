@@ -19,12 +19,29 @@ class MovieSliderView: UIView {
         return label
     }()
 
-    private let pageControl: UIPageControl = {
-        let view = UIPageControl()
-        view.numberOfPages = 6
+    private let scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .systemOrange
 
         return view
     }()
+
+    private let pageControl: UIPageControl = {
+        let view = UIPageControl()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+
+        return view
+    }()
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        if scrollView.subviews.count == 2 {
+            self.configureScrollView()
+        }
+    }
 
 
     private let movieImageView: UIImageView = {
@@ -34,41 +51,92 @@ class MovieSliderView: UIView {
         return view
     }()
 
-    // TODO: model
-    var title: String? {
+    var modelArray: [MovieSliderModel]? {
         didSet {
-            titleLabel.text = title
+            layoutSubviews()
+            pageControl.numberOfPages = modelArray?.count ?? 0
         }
     }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addCustomView()
-        self.setConstraints()
+
+        setSubviews()
+        setConstraints()
+        setGestureForPageControl()
+        setScrollDelegate()
     }
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func addCustomView() {
-        addSubview(titleLabel)
-        addSubview(movieImageView)
-        backgroundColor = .purple
+    func setScrollDelegate() {
+        scrollView.delegate = self
     }
 
-    func setConstraints() {
+    func setSubviews() {
+        addSubview(scrollView)
+        addSubview(pageControl)
+        addSubview(titleLabel)
+    }
+
+    private func setConstraints() {
+
         NSLayoutConstraint.activate([
+
+            scrollView.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
+            scrollView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
+            scrollView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+
+            pageControl.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
+            pageControl.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
+            pageControl.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
+
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
             titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
-            titleLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),
-            titleLabel.heightAnchor.constraint(equalToConstant: 20),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
 
-            movieImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
-            movieImageView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
-            movieImageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0),
-            movieImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0)
         ])
+
+    }
+
+    private func configureScrollView() {
+        guard let modelArray = modelArray else { return }
+
+        scrollView.contentSize = CGSize(width: frame.size.width * CGFloat(modelArray.count),
+                                        height: scrollView.frame.size.height)
+
+        for (index, model) in modelArray.enumerated() {
+            let imageView = UIImageView(frame: CGRect(x: CGFloat(index) * frame.size.width,
+                                            y: 0,
+                                            width: frame.size.width,
+                                            height: scrollView.frame.size.height))
+
+            if let imageData = model.imageData {
+                imageView.image = UIImage(data: imageData)
+            }
+
+            scrollView.addSubview(imageView)
+        }
+    }
+
+    private func setGestureForPageControl() {
+        pageControl.addTarget(self, action: #selector(pageControlDidChange(_ :)), for: .valueChanged)
+    }
+
+    @objc private func pageControlDidChange(_ sender: UIPageControl) {
+        let current = sender.currentPage
+        scrollView.setContentOffset(CGPoint(x: CGFloat(current) * frame.size.width, y: 0), animated: false)
     }
     
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension MovieSliderView: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        pageControl.currentPage = Int(Float(scrollView.contentOffset.x) / Float(scrollView.frame.size.width))
+    }
 }

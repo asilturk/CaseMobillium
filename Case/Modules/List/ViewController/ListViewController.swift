@@ -97,7 +97,7 @@ extension ListViewController {
 
     func setHeaderView() {
         tableView.tableHeaderView = headerView
-        headerView.title = "Merhaba Dunya"
+        headerView.modelArray = viewModel.dummySliderDatas
     }
 
     func setLightMode() {
