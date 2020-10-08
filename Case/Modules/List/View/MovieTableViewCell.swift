@@ -9,6 +9,10 @@ import UIKit
 
 class MovieTableViewCell: UITableViewCell {
 
+    class var typeName: String {
+        String(describing: self)
+    }
+
     private let titleLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -71,9 +75,10 @@ class MovieTableViewCell: UITableViewCell {
         return view
     }()
 
-    var dummy: String? {
+    var model: MovieCellModel? {
         didSet {
-            titleLabel.text = dummy
+            titleLabel.text = model?.title
+            movieImageView.image = UIImage(data: model!.imageData!)
         }
     }
 
@@ -104,23 +109,26 @@ class MovieTableViewCell: UITableViewCell {
     }
 
     func setAnchors() {
-        movieImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
-        movieImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
-        movieImageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
-        movieImageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        movieImageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        movieImageView.image = #imageLiteral(resourceName: "demo.png")
 
-        arrowImageView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10).isActive = true
-        arrowImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        arrowImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        arrowImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        NSLayoutConstraint.activate([
 
-        stackView.leftAnchor.constraint(equalTo: movieImageView.rightAnchor, constant: 10).isActive = true
-        stackView.rightAnchor.constraint(equalTo: arrowImageView.leftAnchor, constant: -10).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-        stackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
+        movieImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
+        movieImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
+        movieImageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),
+        movieImageView.heightAnchor.constraint(equalToConstant: 80),
+        movieImageView.widthAnchor.constraint(equalToConstant: 80),
 
+        arrowImageView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10),
+        arrowImageView.heightAnchor.constraint(equalToConstant: 20),
+        arrowImageView.widthAnchor.constraint(equalToConstant: 20),
+        arrowImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+
+        stackView.leftAnchor.constraint(equalTo: movieImageView.rightAnchor, constant: 10),
+        stackView.rightAnchor.constraint(equalTo: arrowImageView.leftAnchor, constant: -10),
+        stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+        stackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
+
+        ])
 
     }
 
