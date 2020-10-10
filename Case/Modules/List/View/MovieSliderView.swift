@@ -20,35 +20,27 @@ class MovieSliderView: UIView {
     }()
 
     private let scrollView: UIScrollView = {
-        let view = UIScrollView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.backgroundColor = .clear
 
-        return view
+        return scrollView
     }()
 
     private let pageControl: UIPageControl = {
-        let view = UIPageControl()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
+        let pageControl = UIPageControl()
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        pageControl.backgroundColor = .clear
 
-        return view
+        return pageControl
     }()
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        if scrollView.subviews.count == 2 {
-            self.configureScrollView()
-        }
-    }
 
 
     private let movieImageView: UIImageView = {
-        let view = UIImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
 
-        return view
+        return imageView
     }()
 
     var modelArray: [MovieSliderModel]? {
@@ -56,6 +48,14 @@ class MovieSliderView: UIView {
             layoutSubviews()
             pageControl.numberOfPages = modelArray?.count ?? 0
             updateTitleLabel()
+        }
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        if scrollView.subviews.count == 2 {
+            self.configureScrollView()
         }
     }
 

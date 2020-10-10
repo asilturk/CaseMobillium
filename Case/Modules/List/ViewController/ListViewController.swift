@@ -12,27 +12,27 @@ class ListViewController: UIViewController {
     private var popRecognizer: InteractivePopRecognizer? = nil
 
     private let searchBar: UISearchBar = {
-        let view = UISearchBar()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.searchBarStyle = .minimal
-        view.placeholder = "Search"
+        let searchBar = UISearchBar()
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.searchBarStyle = .minimal
+        searchBar.placeholder = "Search"
 
-        return view
+        return searchBar
     }()
 
     private let tableView: UITableView = {
-        let view = UITableView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .clear
 
-        return view
+        return tableView
     }()
 
     private let headerView: MovieSliderView = {
-        let view = MovieSliderView()
-        view.frame.size.height = 240
+        let sliderView = MovieSliderView()
+        sliderView.frame.size.height = 240
 
-        return view
+        return sliderView
     }()
 
     private lazy var viewModel: ListViewModel = {
@@ -83,7 +83,6 @@ extension ListViewController {
     func setTableView() {
         view.addSubview(tableView)
         tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: MovieTableViewCell.typeName)
-//        tableView.register(MovieHeaderView.self, forHeaderFooterViewReuseIdentifier: MovieHeaderView.typeName)
         tableView.delegate = self
         tableView.dataSource = self
 
@@ -128,6 +127,9 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let destination = MovieDetailViewController()
+        destination.movieId = 0 // movie id modelden alinip buraya verilecek
+        navigationController?.pushViewController(destination, animated: true)
     }
 
 }

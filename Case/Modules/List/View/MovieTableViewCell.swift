@@ -14,65 +14,65 @@ class MovieTableViewCell: UITableViewCell {
     }
 
     private let titleLabel: UILabel = {
-        let view = UILabel()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont.boldSystemFont(ofSize: 16)
-        view.textAlignment = .left
-        view.textColor = .black
-        view.numberOfLines = 1
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textAlignment = .left
+        label.textColor = .black
+        label.numberOfLines = 1
 
-        return view
+        return label
     }()
 
     private let descriptionLabel: UILabel = {
-        let view = UILabel()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont.systemFont(ofSize: 13)
-        view.textAlignment = .left
-        view.textColor = .systemGray
-        view.numberOfLines = 2
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 13)
+        label.textAlignment = .left
+        label.textColor = .systemGray
+        label.numberOfLines = 2
 
-        return view
+        return label
     }()
 
     private let dateLabel: UILabel = {
-        let view = UILabel()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont.systemFont(ofSize: 10)
-        view.textAlignment = .left
-        view.textColor = .lightGray
-        view.numberOfLines = 1
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 10)
+        label.textAlignment = .left
+        label.textColor = .lightGray
+        label.numberOfLines = 1
 
-        return view
+        return label
     }()
 
     private let movieImageView: UIImageView = {
-        let view = UIImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 8
-        view.clipsToBounds = true
-        view.contentMode = .scaleToFill
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 8
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleToFill
 
-        return view
+        return imageView
     }()
 
     private let arrowImageView: UIImageView = {
-        let view = UIImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.image = #imageLiteral(resourceName: "rightArrow.png")
-        view.contentMode = .scaleAspectFit
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = #imageLiteral(resourceName: "rightArrow.png")
+        imageView.contentMode = .scaleAspectFit
 
-        return view
+        return imageView
     }()
 
     private let stackView: UIStackView = {
-        let view = UIStackView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.distribution = .equalSpacing
-        view.axis = .horizontal
-        view.spacing = 5
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .equalSpacing
+        stackView.axis = .horizontal
+        stackView.spacing = 5
 
-        return view
+        return stackView
     }()
 
     var model: MovieCellModel? {
