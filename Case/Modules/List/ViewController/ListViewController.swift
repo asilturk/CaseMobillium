@@ -24,20 +24,19 @@ class ListViewController: UIViewController {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
 
         return tableView
     }()
 
-    private let headerView: MovieSliderView = {
+    private let movieSliderView: MovieSliderView = {
         let sliderView = MovieSliderView()
         sliderView.frame.size.height = 240
 
         return sliderView
     }()
 
-    private lazy var viewModel: ListViewModel = {
-        ListViewModel()
-    }()
+    private var viewModel = ListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +44,10 @@ class ListViewController: UIViewController {
         setUserInterface()
         setInteractiveRecognizer()
         setLightMode()
+
+        viewModel.delegate = self
+        viewModel.getNowPlaying()
+        viewModel.getUpcoming()
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -95,8 +98,7 @@ extension ListViewController {
     }
 
     func setHeaderView() {
-        tableView.tableHeaderView = headerView
-        headerView.modelArray = viewModel.dummySliderDatas
+        tableView.tableHeaderView = movieSliderView
     }
 
     func setLightMode() {
@@ -145,3 +147,20 @@ extension ListViewController: UIGestureRecognizerDelegate {
 
 }
 
+// MARK: - ListViewModelDelegate
+extension ListViewController: ListViewModelDelegate {
+
+    func updateSliderView() {
+        DispatchQueue.main.async {
+            self.movieSliderView.model = self.viewModel.nowPlayingMovie
+        }
+    }
+
+    func updateTableView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+
+
+}

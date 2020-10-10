@@ -69,16 +69,26 @@ class MovieTableViewCell: UITableViewCell {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.distribution = .equalSpacing
-        stackView.axis = .horizontal
+        stackView.axis = .vertical
         stackView.spacing = 5
 
         return stackView
     }()
 
+    private let seperatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .red
+
+        return view
+    }()
+
     var model: MovieCellModel? {
         didSet {
             titleLabel.text = model?.title
-            movieImageView.image = UIImage(data: model!.imageData!)
+            descriptionLabel.text = model?.descrtiption
+            dateLabel.text = model?.dateText
+            movieImageView.image = UIImage(data: Demo.s.image!)
+
         }
     }
 
@@ -106,28 +116,35 @@ class MovieTableViewCell: UITableViewCell {
     func addSubviews() {
         [stackView, dateLabel, movieImageView, arrowImageView].forEach { addSubview($0) }
         [titleLabel, descriptionLabel].forEach { stackView.addArrangedSubview($0) }
+        addSubview(seperatorView)
     }
 
     func setAnchors() {
 
         NSLayoutConstraint.activate([
 
-        movieImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
-        movieImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
-        movieImageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),
-        movieImageView.heightAnchor.constraint(equalToConstant: 80),
-        movieImageView.widthAnchor.constraint(equalToConstant: 80),
+            movieImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
+            movieImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
+            movieImageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            movieImageView.heightAnchor.constraint(equalToConstant: 80),
+            movieImageView.widthAnchor.constraint(equalToConstant: 80),
 
-        arrowImageView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10),
-        arrowImageView.heightAnchor.constraint(equalToConstant: 20),
-        arrowImageView.widthAnchor.constraint(equalToConstant: 20),
-        arrowImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            arrowImageView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10),
+            arrowImageView.heightAnchor.constraint(equalToConstant: 20),
+            arrowImageView.widthAnchor.constraint(equalToConstant: 20),
+            arrowImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
 
-        stackView.leftAnchor.constraint(equalTo: movieImageView.rightAnchor, constant: 10),
-        stackView.rightAnchor.constraint(equalTo: arrowImageView.leftAnchor, constant: -10),
-        stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-        stackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
+            dateLabel.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -20),
+            dateLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0),
 
+            stackView.leftAnchor.constraint(equalTo: movieImageView.rightAnchor, constant: 10),
+            stackView.rightAnchor.constraint(equalTo: arrowImageView.leftAnchor, constant: -10),
+            stackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
+
+            seperatorView.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
+            seperatorView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
+            seperatorView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            seperatorView.heightAnchor.constraint(equalToConstant: 10),
         ])
 
     }

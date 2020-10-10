@@ -7,26 +7,53 @@
 
 import UIKit
 
+protocol ListViewModelDelegate: class {
+    func updateSliderView()
+    func updateTableView()
+}
+
+final class ListViewModel {
+
+    private let service = Service()
+
+    private(set) var nowPlayingMovie: NowPlayingMovie? {
+        didSet {
+            delegate?.updateSliderView()
+        }
+    }
+
+    weak var delegate: ListViewModelDelegate?
+
+    private(set) var dummyCellDatas = [MovieCellModel]()
+
+}
+
+// MARK: - Request Methods
+extension ListViewModel {
+
+    func getNowPlaying() {
+        service.getMoviesNowPlaying { (movie) in
+            self.nowPlayingMovie = movie
+        }
+    }
+
+    func getUpcoming() {
+        service.getMoviesUpcoming { (movie) in
+            for result in movie?.results ?? [] {
+                let data = MovieCellModel(title: result.title, descrtiption: result.overview, dateText: result.release_date, imageData: nil)
+                self.dummyCellDatas.append(data)
+            }
+            self.delegate?.updateTableView()
+        }
+    }
+    
+}
+
+
 class Demo {
     private init() {}
     static let s = Demo()
     lazy var image: Data? = {
         UIImage(named: "demo")?.pngData()
     }()
-}
-
-struct ListViewModel {
-
-    let dummySliderDatas = [
-        MovieSliderModel(imageData: Demo.s.image, title: "demo object 1"),
-        MovieSliderModel(imageData: Demo.s.image, title: "demo object 2"),
-        MovieSliderModel(imageData: Demo.s.image, title: "demo object 3")
-    ]
-
-    let dummyCellDatas = [
-        MovieCellModel(title: "demo title 1", descrtiption: "description of that movie as an explanation", dateText: "12.01.12", imageData: Demo.s.image),
-        MovieCellModel(title: "demo title 2", descrtiption: "description of that movie as an explanation", dateText: "13.02.13", imageData: Demo.s.image),
-        MovieCellModel(title: "demo title 3", descrtiption: "description of that movie as an explanation", dateText: "14.03.14", imageData: Demo.s.image),
-
-    ]
 }

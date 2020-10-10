@@ -13,6 +13,7 @@ class MovieSliderView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
+        label.backgroundColor = .red
         label.numberOfLines = 1
         label.font = UIFont.boldSystemFont(ofSize: 14)
 
@@ -43,13 +44,15 @@ class MovieSliderView: UIView {
         return imageView
     }()
 
-    var modelArray: [MovieSliderModel]? {
+    var model: NowPlayingMovie? {
         didSet {
             layoutSubviews()
-            pageControl.numberOfPages = modelArray?.count ?? 0
+            pageControl.numberOfPages = model?.results?.count ?? 0
             updateTitleLabel()
         }
     }
+
+
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -110,7 +113,7 @@ extension MovieSliderView {
     }
 
     private func configureScrollView() {
-        guard let modelArray = modelArray else { return }
+        guard let modelArray = model?.results else { return }
 
         scrollView.contentSize = CGSize(width: frame.size.width * CGFloat(modelArray.count), height: scrollView.frame.size.height)
 
@@ -120,9 +123,10 @@ extension MovieSliderView {
                                             width: frame.size.width,
                                             height: scrollView.frame.size.height))
 
-            if let imageData = model.imageData {
-                imageView.image = UIImage(data: imageData)
-            }
+//            if let imageData = model.imageData {
+                imageView.image = UIImage(data: Demo.s.image!)
+//            }
+
 
             scrollView.addSubview(imageView)
         }
@@ -139,9 +143,10 @@ extension MovieSliderView {
     }
 
     private func updateTitleLabel(for index: Int = 0) {
-        UIView.animate(withDuration: 0.2) {
-            self.titleLabel.text = self.modelArray?[index].title
-        }
+        let title = model?.results?[index].title ?? ""
+        let date = model?.results?[index].release_date ?? ""
+
+        self.titleLabel.text = "\(title) (\(date))"
     }
 
 }
