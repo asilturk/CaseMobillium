@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,8 @@
 		EA91FE61252D07E3009249A6 /* CaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA91FE60252D07E3009249A6 /* CaseUITests.swift */; };
 		EA9A6E0A252D1EE4003B1D2F /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9A6E09252D1EE4003B1D2F /* MovieTableViewCell.swift */; };
 		EAB7FB422532100F008371B2 /* IMDBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB7FB412532100F008371B2 /* IMDBView.swift */; };
+		EAB7FB4B25321AB6008371B2 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB7FB4A25321AB6008371B2 /* Service.swift */; };
+		EAB7FB5125321B4F008371B2 /* ListViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB7FB5025321B4F008371B2 /* ListViewService.swift */; };
 		EAE8886B2531EAE0008E7532 /* SimiliarMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE8886A2531EAE0008E7532 /* SimiliarMoviesView.swift */; };
 		EAE888712531EC1F008E7532 /* SimilarMovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE888702531EC1F008E7532 /* SimilarMovieModel.swift */; };
 		EAE888822531F345008E7532 /* SimilarMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE888802531F345008E7532 /* SimilarMovieCollectionViewCell.swift */; };
@@ -78,6 +80,8 @@
 		EA91FE62252D07E3009249A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA9A6E09252D1EE4003B1D2F /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		EAB7FB412532100F008371B2 /* IMDBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMDBView.swift; sourceTree = "<group>"; };
+		EAB7FB4A25321AB6008371B2 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		EAB7FB5025321B4F008371B2 /* ListViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewService.swift; sourceTree = "<group>"; };
 		EAE8886A2531EAE0008E7532 /* SimiliarMoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimiliarMoviesView.swift; sourceTree = "<group>"; };
 		EAE888702531EC1F008E7532 /* SimilarMovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarMovieModel.swift; sourceTree = "<group>"; };
 		EAE888802531F345008E7532 /* SimilarMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarMovieCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 				EA91FE40252D07E1009249A6 /* SceneDelegate.swift */,
 				EA91FE47252D07E3009249A6 /* Assets.xcassets */,
 				EA91FE4C252D07E3009249A6 /* Info.plist */,
+				EAB7FB4A25321AB6008371B2 /* Service.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -217,6 +222,7 @@
 		EA73E3C2252D09E0000D5A28 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				EAB7FB4F25321B47008371B2 /* Service */,
 				EA70DA96252F0816007668EA /* Model */,
 				EA70DA9A252F082C007668EA /* View */,
 				EA70DA99252F0825007668EA /* ViewModel */,
@@ -303,6 +309,14 @@
 			path = CaseUITests;
 			sourceTree = "<group>";
 		};
+		EAB7FB4F25321B47008371B2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EAB7FB5025321B4F008371B2 /* ListViewService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		EAE8886F2531EC16008E7532 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,7 +335,6 @@
 				FDC1194C7CEEF8736C05E7F6 /* Pods-CaseTests.debug.xcconfig */,
 				EBF072DE840D5D9E18696BCA /* Pods-CaseTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -565,7 +578,9 @@
 				EA73E3CA252D0A72000D5A28 /* ListViewModel.swift in Sources */,
 				EA824BAF252D12E100822471 /* InteractivePopRecognizer.swift in Sources */,
 				EA91FE43252D07E1009249A6 /* ListViewController.swift in Sources */,
+				EAB7FB5125321B4F008371B2 /* ListViewService.swift in Sources */,
 				EA73E3DC252D0AAE000D5A28 /* SearchViewModel.swift in Sources */,
+				EAB7FB4B25321AB6008371B2 /* Service.swift in Sources */,
 				EA91FE3F252D07E1009249A6 /* AppDelegate.swift in Sources */,
 				EA91FE41252D07E1009249A6 /* SceneDelegate.swift in Sources */,
 				EAE888822531F345008E7532 /* SimilarMovieCollectionViewCell.swift in Sources */,
