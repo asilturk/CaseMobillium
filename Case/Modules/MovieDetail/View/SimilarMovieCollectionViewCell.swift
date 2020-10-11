@@ -71,7 +71,7 @@ class SimilarMovieCollectionViewCell: UICollectionViewCell {
     var model: SimilarMovieModel? {
         didSet {
             titleLabel.text = model?.title
-            dateLabel.text = model?.dateString
+            dateLabel.text = "(\(model?.date?.onlyYear ?? ""))"
             movieImageView.kf.setImage(with: model?.imageURL)
         }
     }

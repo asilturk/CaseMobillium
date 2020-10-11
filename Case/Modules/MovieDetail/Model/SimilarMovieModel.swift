@@ -10,6 +10,6 @@ import Foundation
 struct SimilarMovieModel {
     let id: Int?
     let title: String?
-    let dateString: String?
+    let date: Date?
     let imageURL: URL?
 }
