@@ -20,6 +20,13 @@ class ListViewController: UIViewController {
         return searchBar
     }()
 
+    private let searchResultView: SearchResultView = {
+        let view = SearchResultView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+
+        return view
+    }()
+
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +43,7 @@ class ListViewController: UIViewController {
         return sliderView
     }()
 
-    private var viewModel = ListViewModel()
+    private let viewModel = ListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +55,8 @@ class ListViewController: UIViewController {
         viewModel.delegate = self
         viewModel.getNowPlaying()
         viewModel.getUpcoming()
+
+        searchResultView.delegate = self
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -68,6 +77,7 @@ extension ListViewController {
         setSearchBar()
         setTableView()
         setHeaderView()
+        setSearchResultView()
     }
 
     func setSearchBar() {
@@ -97,6 +107,18 @@ extension ListViewController {
         ])
     }
 
+    func setSearchResultView() {
+        view.addSubview(searchResultView)
+        searchResultView.isHidden = true
+
+        NSLayoutConstraint.activate([
+            searchResultView.leftAnchor.constraint(equalTo: view.leftAnchor, constant:0),
+            searchResultView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
+            searchResultView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 0),
+            searchResultView.heightAnchor.constraint(equalToConstant: view.frame.height / 3)
+        ])
+    }
+
     func setHeaderView() {
         tableView.tableHeaderView = movieSliderView
     }
@@ -105,11 +127,25 @@ extension ListViewController {
         view.backgroundColor = .white
         overrideUserInterfaceStyle = .light
     }
+
+    func showMovieDetail(by id: Int) {
+        let destination = MovieDetailViewController()
+        destination.movieId = id
+        navigationController?.pushViewController(destination, animated: true)
+
+        searchResultView.isHidden = true
+        searchBar.text = nil
+        view.endEditing(true)
+    }
 }
 
 // MARK: - UISearchBarDelegate
 extension ListViewController: UISearchBarDelegate {
 
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard searchText.count >= 2 else { return }
+        viewModel.searchMovies(by: searchText)
+    }
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -129,14 +165,17 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let model = viewModel.upcomingMovies[indexPath.row]
-        let destination = MovieDetailViewController()
-        destination.movieId = model.id
-        navigationController?.pushViewController(destination, animated: true)
+        guard let id = viewModel.upcomingMovies[indexPath.row].id else { return }
+        showMovieDetail(by: id)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+        searchResultView.isHidden = true
     }
 
 }
@@ -164,6 +203,17 @@ extension ListViewController: ListViewModelDelegate {
             self.tableView.reloadData()
         }
     }
+    func updateSearchResult() {
+        print(":: \(viewModel.searchResult)")
+        searchResultView.movies = viewModel.searchResult
+        searchResultView.isHidden = viewModel.searchResult?.count == 0
+    }
 
+}
 
+extension ListViewController: SearchResultViewDelegate {
+    func updateResults(movieId: Int?) {
+        guard let id = movieId else { return }
+        showMovieDetail(by: id)
+    }
 }

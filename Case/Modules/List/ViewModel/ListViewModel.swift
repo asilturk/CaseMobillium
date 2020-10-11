@@ -10,6 +10,7 @@ import UIKit
 protocol ListViewModelDelegate: class {
     func updateSliderView()
     func updateTableView()
+    func updateSearchResult()
 }
 
 final class ListViewModel {
@@ -27,6 +28,13 @@ final class ListViewModel {
             delegate?.updateSliderView()
         }
     }
+
+    private(set) var searchResult: [MovieCellModel]? {
+        didSet {
+            delegate?.updateSearchResult()
+        }
+    }
+
 
     weak var delegate: ListViewModelDelegate?
 
@@ -61,6 +69,17 @@ extension ListViewModel {
             }
 
             self.upcomingMovies = model
+        }
+    }
+
+    func searchMovies(by searchText: String) {
+        service.searchMovie(by: searchText) { (response) in
+            var model = [MovieCellModel]()
+            for result in response?.results ?? [] {
+                let data = MovieCellModel(id: result.id, title: result.title)
+                model.append(data)
+            }
+            self.searchResult = model
         }
     }
     

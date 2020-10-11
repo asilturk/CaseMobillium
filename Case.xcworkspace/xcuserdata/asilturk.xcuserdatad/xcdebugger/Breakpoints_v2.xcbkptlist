@@ -23,80 +23,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "16D35F83-BD4B-477A-BD46-226B00B0053C"
+            uuid = "B2491062-CF9A-4407-9243-0B3C76B45F0E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Case/Modules/MovieDetail/ViewModel/MovieDetailViewModel.swift"
+            filePath = "Case/Modules/List/ViewController/ListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "getSimilarMovies(movieId:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DDC94392-FF80-4939-8097-453460A465E0"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Case/Modules/MovieDetail/ViewModel/MovieDetailViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "getSimilarMovies(movieId:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "DDC94392-FF80-4939-8097-453460A465E0 - 673e07ebc1ee7c5d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Case.MovieDetailViewModel.getSimilarMovies(movieId: Swift.Optional&lt;Swift.Int&gt;) -&gt; ()"
-                  moduleName = "Case"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/asilturk/Desktop/Case/Case/Modules/MovieDetail/ViewModel/MovieDetailViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "47">
-               </Location>
-               <Location
-                  uuid = "DDC94392-FF80-4939-8097-453460A465E0 - b465ff360a661803"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Case.SimilarMovieResponse&gt;) -&gt; () in Case.MovieDetailViewModel.getSimilarMovies(movieId: Swift.Optional&lt;Swift.Int&gt;) -&gt; ()"
-                  moduleName = "Case"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/asilturk/Desktop/Case/Case/Modules/MovieDetail/ViewModel/MovieDetailViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "307">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "953E3A88-A4FE-4176-9775-FB41F9C655D5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Case/Modules/MovieDetail/ViewController/MovieDetailViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "openImdbWebsite()"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "updateSearchResult()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

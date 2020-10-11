@@ -21,6 +21,7 @@ class MovieDetailViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
+        view.backgroundColor = .lightGray
 
         return view
     }()
@@ -64,7 +65,6 @@ class MovieDetailViewController: UIViewController {
         super.viewDidLoad()
 
         setUserInterface()
-        setInteractiveRecognizer()
         setLightMode()
 
         requestMovieDetails()
@@ -173,17 +173,6 @@ extension MovieDetailViewController {
             UIApplication.shared.open(url)
         }
     }
-}
-
-// MARK: - UIGestureRecognizerDelegate
-extension MovieDetailViewController: UIGestureRecognizerDelegate {
-
-    private func setInteractiveRecognizer() {
-        guard let controller = navigationController else { return }
-        popRecognizer = InteractivePopRecognizer(controller: controller)
-        controller.interactivePopGestureRecognizer?.delegate = popRecognizer
-    }
-
 }
 
 extension MovieDetailViewController: MovieDetailViewModelDelegate {

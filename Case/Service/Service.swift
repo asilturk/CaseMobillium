@@ -59,6 +59,17 @@ struct Service {
         }
     }
 
+    func searchMovie(by searchText: String, page: Int = 1, includeAdult: Bool = false, completion: @escaping(SearchResponse?) -> ()) {
+
+        let url = "\(baseUrl)/search/movie?api_key=\(apiKey)&language=en-US&query=\(searchText)&page=\(page)&include_adult=\(includeAdult)"
+
+        AF.request(url, method: .get).response { result in
+            guard let data = result.data else { return }
+            let jsonDecoder = JSONDecoder()
+            let responseModel = try? jsonDecoder.decode(SearchResponse.self, from: data)
+            completion(responseModel)
+        }
+    }
 
 
 }
