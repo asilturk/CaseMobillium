@@ -14,11 +14,10 @@ class MovieSliderView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
-        label.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
         label.numberOfLines = 1
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
 
         return label
     }()
@@ -39,10 +38,10 @@ class MovieSliderView: UIView {
         return pageControl
     }()
 
-    var model: NowPlayingMovieResponse? {
+    var movies: [MovieSliderModel]? {
         didSet {
             layoutSubviews()
-            pageControl.numberOfPages = model?.results?.count ?? 0
+            pageControl.numberOfPages = movies?.count ?? 0
             updateTitleLabel()
         }
     }
@@ -106,17 +105,17 @@ extension MovieSliderView {
     }
 
     private func configureScrollView() {
-        guard let modelArray = model?.results else { return }
+        guard let modelArray = movies else { return }
 
         scrollView.contentSize = CGSize(width: frame.size.width * CGFloat(modelArray.count), height: scrollView.frame.size.height)
 
-        for (index, model) in modelArray.enumerated() {
+        for (index, movie) in modelArray.enumerated() {
             let imageView = UIImageView(frame: CGRect(x: CGFloat(index) * frame.size.width,
                                                       y: 0,
                                                       width: frame.size.width,
                                                       height: scrollView.frame.size.height))
 
-            imageView.kf.setImage(with: URL(string: ImageType.big.url + (model.poster_path ?? "")))
+            imageView.kf.setImage(with: movie.imageURL)
 
             scrollView.addSubview(imageView)
         }
@@ -133,8 +132,8 @@ extension MovieSliderView {
     }
 
     private func updateTitleLabel(for index: Int = 0) {
-        let title = model?.results?[index].title ?? ""
-        let date = model?.results?[index].release_date ?? ""
+        let title = movies?[index].title ?? ""
+        let date = movies?[index].date?.onlyYear ?? ""
 
         self.titleLabel.text = " \(title) (\(date))"
     }

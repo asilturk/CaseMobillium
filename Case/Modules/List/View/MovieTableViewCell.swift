@@ -61,7 +61,7 @@ class MovieTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = #imageLiteral(resourceName: "rightArrow.png")
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
 
         return imageView
     }()
@@ -85,9 +85,9 @@ class MovieTableViewCell: UITableViewCell {
 
     var model: MovieCellModel? {
         didSet {
-            titleLabel.text = model?.title
+            titleLabel.text = "\(model?.title ?? "") (\(model?.date?.onlyYear ?? ""))"
             descriptionLabel.text = model?.descrtiption
-            dateLabel.text = model?.dateText
+            dateLabel.text = model?.date?.shortDate
             movieImageView.kf.setImage(with: model?.imageURL)
         }
     }

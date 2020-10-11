@@ -11,6 +11,6 @@ struct MovieCellModel {
     let id: Int?
     let title: String?
     let descrtiption: String?
-    let dateText: String?
+    let date: Date?
     let imageURL: URL?
 }

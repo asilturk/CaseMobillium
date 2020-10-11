@@ -107,7 +107,7 @@ extension MovieDetailViewController {
             movieImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: -20),
             movieImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
             movieImageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
-            movieImageView.heightAnchor.constraint(equalToConstant: 260)
+            movieImageView.heightAnchor.constraint(equalToConstant: view.frame.width - 100)
         ])
     }
 
@@ -141,6 +141,7 @@ extension MovieDetailViewController {
     }
 
     func setSimilarMoviesView() {
+
         NSLayoutConstraint.activate([
             similarMoviesView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
             similarMoviesView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),

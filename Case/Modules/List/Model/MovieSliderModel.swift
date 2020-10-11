@@ -10,6 +10,7 @@ import Foundation
 struct MovieSliderModel {
 
     let title: String?
+    let date: Date?
     let imageURL: URL?
     
 }

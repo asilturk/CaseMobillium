@@ -29,7 +29,7 @@ class SimilarMovieCollectionViewCell: UICollectionViewCell {
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleToFill
         imageView.layer.cornerRadius = 5
-        imageView.backgroundColor = .yellow
+        imageView.backgroundColor = .lightGray
 
         return imageView
     }()
