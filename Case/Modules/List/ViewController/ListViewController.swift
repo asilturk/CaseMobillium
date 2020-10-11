@@ -135,6 +135,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(destination, animated: true)
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+
 }
 
 // MARK: - UIGestureRecognizerDelegate

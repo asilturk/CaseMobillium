@@ -92,26 +92,6 @@ extension MovieDetailViewController {
         setDescriptionView()
         setImdbView()
         setSimilarMoviesView()
-
-        // REMOVE: demo items
-        titleLabel.text = "zamazingooo"
-        movieImageView.image = #imageLiteral(resourceName: "demo.png")
-        detailTextView.text =
-            """
-haleluyaaanaber la
-    iiyi ads
-a
-dfa
-sd
-fasdfasdfasd
-fa
-sdfasd
-fa
-sdf
-asdfa
-sdf
-asdfasdfsdfas
-"""
     }
 
     func setSubviews() {

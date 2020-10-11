@@ -49,7 +49,7 @@ final class MovieDetailViewModel {
             for result in response?.results ?? [] {
                 let data = SimilarMovieModel(title: result.title,
                                              dateString: result.release_date,
-                                             imageURL: URL(string: ImageType.big.url + (result.poster_path ?? "")))
+                                             imageURL: URL(string: ImageType.small.url + (result.poster_path ?? "")))
                 model.append(data)
             }
 

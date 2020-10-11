@@ -8,9 +8,9 @@
 import Foundation
 
 struct MovieDetailModel {
-    var title: String?
-    var detail: String?
-    var dateString: String?
-    var avarage: Double?
-    var imageURL: URL?
+    let title: String?
+    let detail: String?
+    let dateString: String?
+    let avarage: Double?
+    let imageURL: URL?
 }

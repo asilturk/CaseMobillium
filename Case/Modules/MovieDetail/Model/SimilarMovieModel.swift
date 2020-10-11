@@ -8,7 +8,7 @@
 import Foundation
 
 struct SimilarMovieModel {
-    var title: String?
-    var dateString: String?
-    var imageURL: URL?
+    let title: String?
+    let dateString: String?
+    let imageURL: URL?
 }

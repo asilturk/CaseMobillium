@@ -45,7 +45,11 @@ extension ListViewModel {
         service.getMoviesUpcoming { (movie) in
             var model = [MovieCellModel]()
             for result in movie?.results ?? [] {
-                let data = MovieCellModel(id: result.id, title: result.title, descrtiption: result.overview, dateText: result.release_date, imageData: nil)
+                let data = MovieCellModel(id: result.id,
+                                          title: result.title,
+                                          descrtiption: result.overview,
+                                          dateText: result.release_date,
+                                          imageURL: URL(string: ImageType.small.url + (result.poster_path ?? "")))
                 model.append(data)
             }
 
@@ -53,13 +57,4 @@ extension ListViewModel {
         }
     }
     
-}
-
-
-class Demo {
-    private init() {}
-    static let s = Demo()
-    lazy var image: Data? = {
-        UIImage(named: "demo")?.pngData()
-    }()
 }

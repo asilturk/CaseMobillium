@@ -8,6 +8,8 @@
 import Foundation
 
 struct MovieSliderModel {
-    let imageData: Data?
+
     let title: String?
+    let imageURL: URL?
+    
 }

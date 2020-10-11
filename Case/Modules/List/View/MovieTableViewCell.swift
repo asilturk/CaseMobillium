@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieTableViewCell: UITableViewCell {
 
@@ -87,8 +88,7 @@ class MovieTableViewCell: UITableViewCell {
             titleLabel.text = model?.title
             descriptionLabel.text = model?.descrtiption
             dateLabel.text = model?.dateText
-            movieImageView.image = UIImage(data: Demo.s.image!)
-
+            movieImageView.kf.setImage(with: model?.imageURL)
         }
     }
 

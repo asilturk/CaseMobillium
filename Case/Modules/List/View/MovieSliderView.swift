@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieSliderView: UIView {
 
@@ -13,7 +14,9 @@ class MovieSliderView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
-        label.backgroundColor = .red
+        label.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        label.layer.cornerRadius = 10
+        label.clipsToBounds = true
         label.numberOfLines = 1
         label.font = UIFont.boldSystemFont(ofSize: 14)
 
@@ -34,14 +37,6 @@ class MovieSliderView: UIView {
         pageControl.backgroundColor = .clear
 
         return pageControl
-    }()
-
-
-    private let movieImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-
-        return imageView
     }()
 
     var model: NowPlayingMovieResponse? {
@@ -117,14 +112,11 @@ extension MovieSliderView {
 
         for (index, model) in modelArray.enumerated() {
             let imageView = UIImageView(frame: CGRect(x: CGFloat(index) * frame.size.width,
-                                            y: 0,
-                                            width: frame.size.width,
-                                            height: scrollView.frame.size.height))
+                                                      y: 0,
+                                                      width: frame.size.width,
+                                                      height: scrollView.frame.size.height))
 
-//            if let imageData = model.imageData {
-                imageView.image = UIImage(data: Demo.s.image!)
-//            }
-
+            imageView.kf.setImage(with: URL(string: ImageType.big.url + (model.poster_path ?? "")))
 
             scrollView.addSubview(imageView)
         }
@@ -144,7 +136,7 @@ extension MovieSliderView {
         let title = model?.results?[index].title ?? ""
         let date = model?.results?[index].release_date ?? ""
 
-        self.titleLabel.text = "\(title) (\(date))"
+        self.titleLabel.text = " \(title) (\(date))"
     }
 
 }
