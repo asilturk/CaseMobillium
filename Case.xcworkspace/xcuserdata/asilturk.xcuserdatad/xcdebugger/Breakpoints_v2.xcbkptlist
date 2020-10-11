@@ -20,5 +20,69 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "16D35F83-BD4B-477A-BD46-226B00B0053C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Case/Modules/MovieDetail/ViewModel/MovieDetailViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "getSimilarMovies(movieId:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DDC94392-FF80-4939-8097-453460A465E0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Case/Modules/MovieDetail/ViewModel/MovieDetailViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "getSimilarMovies(movieId:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DDC94392-FF80-4939-8097-453460A465E0 - 673e07ebc1ee7d36"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Case.MovieDetailViewModel.getSimilarMovies(movieId: Swift.Optional&lt;Swift.Int&gt;) -&gt; ()"
+                  moduleName = "Case"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/asilturk/Desktop/Case/Case/Modules/MovieDetail/ViewModel/MovieDetailViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "47">
+               </Location>
+               <Location
+                  uuid = "DDC94392-FF80-4939-8097-453460A465E0 - b465ff360a66192a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Case.SimilarMovieResponse&gt;) -&gt; () in Case.MovieDetailViewModel.getSimilarMovies(movieId: Swift.Optional&lt;Swift.Int&gt;) -&gt; ()"
+                  moduleName = "Case"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/asilturk/Desktop/Case/Case/Modules/MovieDetail/ViewModel/MovieDetailViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "228">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

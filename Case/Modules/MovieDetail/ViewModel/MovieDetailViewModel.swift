@@ -22,13 +22,11 @@ final class MovieDetailViewModel {
 
     private let service = Service()
 
-    let dummySimilarMovieArray = [
-        SimilarMovieModel(imageData: Demo.s.image, title: "deneme 1", dateString: "2020"),
-        SimilarMovieModel(imageData: nil, title: "deneme 3", dateString: "2021"),
-        SimilarMovieModel(imageData:  Demo.s.image, title: "deneme 2", dateString: "2022"),
-        SimilarMovieModel(imageData: nil, title: "deneme 4", dateString: "2021"),
-        SimilarMovieModel(imageData: Demo.s.image, title: "deneme 5", dateString: "2021"),
-    ]
+    var similarMovies = [SimilarMovieModel]() {
+        didSet {
+            delegate?.updateSimilarMoves()
+        }
+    }
 
     weak var delegate: MovieDetailViewModelDelegate?
 
@@ -37,5 +35,17 @@ final class MovieDetailViewModel {
             self.movieDetail = movieDetail
         }
     }
-    
+
+    func getSimilarMovies(movieId: Int?) {
+        service.getSimilarMovies(movieId: movieId) { (response) in
+            var model = [SimilarMovieModel]()
+            for result in response?.results ?? [] {
+                let data = SimilarMovieModel(imageData: nil, title: result.title, dateString: result.release_date)
+                model.append(data)
+            }
+
+            self.similarMovies = model
+        }
+    }
 }
+

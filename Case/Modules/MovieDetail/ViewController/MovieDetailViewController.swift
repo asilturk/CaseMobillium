@@ -53,8 +53,8 @@ class MovieDetailViewController: UIViewController {
         return view
     }()
 
-    private let similiarMoviesView: SimiliarMoviesView = {
-        let view = SimiliarMoviesView()
+    private let similarMoviesView: SimilarMoviesView = {
+        let view = SimilarMoviesView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -118,7 +118,7 @@ asdfasdfsdfas
         view.addSubview(titleLabel)
         view.addSubview(descrtiptionTextView)
         view.addSubview(imdbView)
-        view.addSubview(similiarMoviesView)
+        view.addSubview(similarMoviesView)
     }
 
     func setMovieImageView() {
@@ -152,7 +152,7 @@ asdfasdfsdfas
         imdbView.delegate = self
 
         NSLayoutConstraint.activate([
-            imdbView.bottomAnchor.constraint(equalTo: similiarMoviesView.topAnchor, constant: -16),
+            imdbView.bottomAnchor.constraint(equalTo: similarMoviesView.topAnchor, constant: -16),
             imdbView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
             imdbView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
             imdbView.heightAnchor.constraint(equalToConstant: 50)
@@ -161,10 +161,10 @@ asdfasdfsdfas
 
     func setSimilarMoviesView() {
         NSLayoutConstraint.activate([
-            similiarMoviesView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
-            similiarMoviesView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
-            similiarMoviesView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
-            similiarMoviesView.heightAnchor.constraint(equalToConstant: 200)
+            similarMoviesView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            similarMoviesView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
+            similarMoviesView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
+            similarMoviesView.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
 
@@ -178,7 +178,7 @@ asdfasdfsdfas
     }
 
     func requestSimilarMovies() {
-//        viewModel.getMovieDetails(movieId: movieId)
+        viewModel.getSimilarMovies(movieId: movieId)
     }
 }
 
@@ -202,7 +202,8 @@ extension MovieDetailViewController: MovieDetailViewModelDelegate {
     }
 
     func updateSimilarMoves() {
-        
+        similarMoviesView
+        similarMoviesView.similarMovies = viewModel.similarMovies
     }
 
 

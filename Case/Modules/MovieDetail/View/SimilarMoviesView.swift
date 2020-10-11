@@ -1,5 +1,5 @@
 //
-//  SimiliarMoviesView.swift
+//  SimilarMoviesView.swift
 //  Case
 //
 //  Created by Burak Furkan Asilturk on 10.10.2020.
