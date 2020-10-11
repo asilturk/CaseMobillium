@@ -37,8 +37,6 @@
 		EA91FE41252D07E1009249A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA91FE40252D07E1009249A6 /* SceneDelegate.swift */; };
 		EA91FE43252D07E1009249A6 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA91FE42252D07E1009249A6 /* ListViewController.swift */; };
 		EA91FE48252D07E3009249A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA91FE47252D07E3009249A6 /* Assets.xcassets */; };
-		EA91FE56252D07E3009249A6 /* CaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA91FE55252D07E3009249A6 /* CaseTests.swift */; };
-		EA91FE61252D07E3009249A6 /* CaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA91FE60252D07E3009249A6 /* CaseUITests.swift */; };
 		EA9A6E0A252D1EE4003B1D2F /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9A6E09252D1EE4003B1D2F /* MovieTableViewCell.swift */; };
 		EAB7FB422532100F008371B2 /* IMDBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB7FB412532100F008371B2 /* IMDBView.swift */; };
 		EAB7FB4B25321AB6008371B2 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB7FB4A25321AB6008371B2 /* Service.swift */; };
@@ -100,11 +98,7 @@
 		EA91FE47252D07E3009249A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA91FE4C252D07E3009249A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA91FE51252D07E3009249A6 /* CaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA91FE55252D07E3009249A6 /* CaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseTests.swift; sourceTree = "<group>"; };
-		EA91FE57252D07E3009249A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA91FE5C252D07E3009249A6 /* CaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA91FE60252D07E3009249A6 /* CaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseUITests.swift; sourceTree = "<group>"; };
-		EA91FE62252D07E3009249A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA9A6E09252D1EE4003B1D2F /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		EAB7FB412532100F008371B2 /* IMDBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMDBView.swift; sourceTree = "<group>"; };
 		EAB7FB4A25321AB6008371B2 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -298,8 +292,6 @@
 			isa = PBXGroup;
 			children = (
 				EA91FE3D252D07E1009249A6 /* Case */,
-				EA91FE54252D07E3009249A6 /* CaseTests */,
-				EA91FE5F252D07E3009249A6 /* CaseUITests */,
 				EA91FE3C252D07E1009249A6 /* Products */,
 				F83C2F2A3CA7ABBF1DF629EC /* Pods */,
 				90563454D2A19835869D0BA8 /* Frameworks */,
@@ -326,24 +318,6 @@
 				EA824BAD252D12C700822471 /* Helper */,
 			);
 			path = Case;
-			sourceTree = "<group>";
-		};
-		EA91FE54252D07E3009249A6 /* CaseTests */ = {
-			isa = PBXGroup;
-			children = (
-				EA91FE55252D07E3009249A6 /* CaseTests.swift */,
-				EA91FE57252D07E3009249A6 /* Info.plist */,
-			);
-			path = CaseTests;
-			sourceTree = "<group>";
-		};
-		EA91FE5F252D07E3009249A6 /* CaseUITests */ = {
-			isa = PBXGroup;
-			children = (
-				EA91FE60252D07E3009249A6 /* CaseUITests.swift */,
-				EA91FE62252D07E3009249A6 /* Info.plist */,
-			);
-			path = CaseUITests;
 			sourceTree = "<group>";
 		};
 		EABE5758253328D80061FCDD /* MovieResponse */ = {
@@ -668,7 +642,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA91FE56252D07E3009249A6 /* CaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,7 +649,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA91FE61252D07E3009249A6 /* CaseUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
