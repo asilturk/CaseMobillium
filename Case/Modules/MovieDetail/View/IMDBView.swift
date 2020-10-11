@@ -33,7 +33,7 @@ class IMDBView: UIView {
         return imageView
     }()
 
-    private let rateLabel: UILabel = {
+    private let avarageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.black.withAlphaComponent(0.2)
@@ -62,6 +62,18 @@ class IMDBView: UIView {
         return imageView
     }()
 
+    var dateString: String? {
+        didSet {
+            dateLabel.text = dateString
+        }
+    }
+
+    var avarage: Double? {
+        didSet {
+            avarageLabel.text = "\(avarage ?? 0.0)"
+        }
+    }
+
     weak var delegate: IMDBViewDelegate?
 
     override init(frame: CGRect) {
@@ -82,7 +94,7 @@ extension IMDBView {
 
     func setSubview() {
         addSubview(stackView)
-        [starImageView, rateLabel, dateLabel, imdbImageView].forEach { stackView.addArrangedSubview($0) }
+        [starImageView, avarageLabel, dateLabel, imdbImageView].forEach { stackView.addArrangedSubview($0) }
 
         NSLayoutConstraint.activate([
 //            stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),

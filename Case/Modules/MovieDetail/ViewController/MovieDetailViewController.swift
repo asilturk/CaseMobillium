@@ -28,7 +28,7 @@ class MovieDetailViewController: UIViewController {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.textColor = .darkText
-        view.font = UIFont.boldSystemFont(ofSize: 18)
+        view.font = UIFont.boldSystemFont(ofSize: 20)
 
         return view
     }()
@@ -36,7 +36,7 @@ class MovieDetailViewController: UIViewController {
     private let descrtiptionTextView: UITextView = {
         let view = UITextView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont.boldSystemFont(ofSize: 14)
+        view.font = UIFont.boldSystemFont(ofSize: 16)
         view.textColor = .darkGray
         view.isEditable = false
         view.isSelectable = false
@@ -65,6 +65,11 @@ class MovieDetailViewController: UIViewController {
         setUserInterface()
         setInteractiveRecognizer()
         setLightMode()
+
+        requestMovieDetails()
+        requestSimilarMovies()
+
+        viewModel.delegate = self
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -167,6 +172,14 @@ asdfasdfsdfas
         view.backgroundColor = .white
         overrideUserInterfaceStyle = .light
     }
+
+    func requestMovieDetails() {
+        viewModel.getMovieDetails(movieId: movieId)
+    }
+
+    func requestSimilarMovies() {
+//        viewModel.getMovieDetails(movieId: movieId)
+    }
 }
 
 // MARK: - UIGestureRecognizerDelegate
@@ -180,6 +193,22 @@ extension MovieDetailViewController: UIGestureRecognizerDelegate {
 
 }
 
+extension MovieDetailViewController: MovieDetailViewModelDelegate {
+    func updateDetails() {
+        titleLabel.text = viewModel.movieDetail?.title
+        descrtiptionTextView.text = viewModel.movieDetail?.overview
+        imdbView.dateString = viewModel.movieDetail?.release_date
+        imdbView.avarage = viewModel.movieDetail?.vote_average
+    }
+
+    func updateSimilarMoves() {
+        
+    }
+
+
+}
+
+// MARK: - IMDBViewDelegate
 extension MovieDetailViewController: IMDBViewDelegate {
     func imdbIconTapped() {
         // TODO: open a web browser

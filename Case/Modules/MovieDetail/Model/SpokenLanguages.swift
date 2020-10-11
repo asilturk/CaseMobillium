@@ -12,7 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Spoken_languages : Codable {
+struct SpokenLanguages : Codable {
 	let iso_639_1 : String?
 	let name : String?
 

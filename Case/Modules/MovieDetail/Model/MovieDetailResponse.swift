@@ -31,7 +31,7 @@ struct MovieDetailResponse : Codable {
 	let release_date : String?
 	let revenue : Int?
 	let runtime : Int?
-	let spoken_languages : [Spoken_languages]?
+	let spoken_languages : [SpokenLanguages]?
 	let status : String?
 	let tagline : String?
 	let title : String?
@@ -88,7 +88,7 @@ struct MovieDetailResponse : Codable {
 		release_date = try values.decodeIfPresent(String.self, forKey: .release_date)
 		revenue = try values.decodeIfPresent(Int.self, forKey: .revenue)
 		runtime = try values.decodeIfPresent(Int.self, forKey: .runtime)
-		spoken_languages = try values.decodeIfPresent([Spoken_languages].self, forKey: .spoken_languages)
+		spoken_languages = try values.decodeIfPresent([SpokenLanguages].self, forKey: .spoken_languages)
 		status = try values.decodeIfPresent(String.self, forKey: .status)
 		tagline = try values.decodeIfPresent(String.self, forKey: .tagline)
 		title = try values.decodeIfPresent(String.self, forKey: .title)
