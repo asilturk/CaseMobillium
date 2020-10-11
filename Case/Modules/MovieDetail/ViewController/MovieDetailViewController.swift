@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieDetailViewController: UIViewController {
 
@@ -33,7 +34,7 @@ class MovieDetailViewController: UIViewController {
         return view
     }()
 
-    private let descrtiptionTextView: UITextView = {
+    private let detailTextView: UITextView = {
         let view = UITextView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.font = UIFont.boldSystemFont(ofSize: 16)
@@ -95,7 +96,7 @@ extension MovieDetailViewController {
         // REMOVE: demo items
         titleLabel.text = "zamazingooo"
         movieImageView.image = #imageLiteral(resourceName: "demo.png")
-        descrtiptionTextView.text =
+        detailTextView.text =
             """
 haleluyaaanaber la
     iiyi ads
@@ -116,7 +117,7 @@ asdfasdfsdfas
     func setSubviews() {
         view.addSubview(movieImageView)
         view.addSubview(titleLabel)
-        view.addSubview(descrtiptionTextView)
+        view.addSubview(detailTextView)
         view.addSubview(imdbView)
         view.addSubview(similarMoviesView)
     }
@@ -141,10 +142,10 @@ asdfasdfsdfas
 
     func setDescriptionView() {
         NSLayoutConstraint.activate([
-            descrtiptionTextView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-            descrtiptionTextView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            descrtiptionTextView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            descrtiptionTextView.bottomAnchor.constraint(equalTo: imdbView.topAnchor, constant: -8)
+            detailTextView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+            detailTextView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+            detailTextView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+            detailTextView.bottomAnchor.constraint(equalTo: imdbView.topAnchor, constant: -8)
         ])
     }
 
@@ -195,14 +196,14 @@ extension MovieDetailViewController: UIGestureRecognizerDelegate {
 
 extension MovieDetailViewController: MovieDetailViewModelDelegate {
     func updateDetails() {
-        titleLabel.text = viewModel.movieDetail?.title
-        descrtiptionTextView.text = viewModel.movieDetail?.overview
-        imdbView.dateString = viewModel.movieDetail?.release_date
-        imdbView.avarage = viewModel.movieDetail?.vote_average
+        titleLabel.text = viewModel.movie?.title
+        detailTextView.text = viewModel.movie?.detail
+        imdbView.dateString = viewModel.movie?.dateString
+        imdbView.avarage = viewModel.movie?.avarage
+        movieImageView.kf.setImage(with: viewModel.movie?.imageURL)
     }
 
     func updateSimilarMoves() {
-        similarMoviesView
         similarMoviesView.similarMovies = viewModel.similarMovies
     }
 

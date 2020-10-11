@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 struct Service {
-
+    
     private let apiKey = "5f8aa4bd65792788f329a3e785908ab7"
     private let baseUrl = "https://api.themoviedb.org/3"
 
@@ -48,7 +48,6 @@ struct Service {
     }
 
     func getSimilarMovies(movieId: Int?, page: Int = 1, completion: @escaping(SimilarMovieResponse?) -> ()) {
-
         guard let movieId = movieId else { return }
         let url = "\(baseUrl)/movie/\(movieId)/similar?api_key=\(apiKey)&language=en-US&page=\(page)"
 
@@ -58,8 +57,8 @@ struct Service {
             let responseModel = try? jsonDecoder.decode(SimilarMovieResponse.self, from: data)
             completion(responseModel)
         }
-
-
     }
+
+
 
 }

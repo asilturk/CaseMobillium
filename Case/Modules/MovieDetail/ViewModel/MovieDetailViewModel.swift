@@ -14,7 +14,7 @@ protocol MovieDetailViewModelDelegate: class {
 
 final class MovieDetailViewModel {
 
-    private(set) var movieDetail: MovieDetailResponse? {
+    private(set) var movie: MovieDetailModel? {
         didSet {
             delegate?.updateDetails()
         }
@@ -31,8 +31,15 @@ final class MovieDetailViewModel {
     weak var delegate: MovieDetailViewModelDelegate?
 
     func getMovieDetails(movieId: Int?) {
-        service.getMovieDetails(movieId: movieId) { (movieDetail) in
-            self.movieDetail = movieDetail
+        service.getMovieDetails(movieId: movieId) { (response) in
+
+            let movieDetail = MovieDetailModel(title: response?.title,
+                                               detail: response?.overview,
+                                               dateString: response?.release_date,
+                                               avarage: response?.vote_average,
+                                               imageURL: URL(string: ImageType.big.url + (response?.poster_path ?? "")))
+
+            self.movie = movieDetail
         }
     }
 
