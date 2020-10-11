@@ -13,7 +13,6 @@
 		EA54CA9B25332E5700E90604 /* MovieDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54CA9A25332E5700E90604 /* MovieDetailModel.swift */; };
 		EA54CAA025332FD700E90604 /* ImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54CA9F25332FD700E90604 /* ImageType.swift */; };
 		EA54CAA5253334B000E90604 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54CAA4253334B000E90604 /* Date+Extensions.swift */; };
-		EA54CAAA2533352D00E90604 /* UIIMage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54CAA92533352D00E90604 /* UIIMage+Extensions.swift */; };
 		EA54CABE25334B1300E90604 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54CABD25334B1200E90604 /* SearchResponse.swift */; };
 		EA54CAC925334E6000E90604 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54CAC825334E6000E90604 /* SearchResultView.swift */; };
 		EA6F012D253227E000523F76 /* UpcomingMovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6F012C253227E000523F76 /* UpcomingMovieResponse.swift */; };
@@ -30,7 +29,6 @@
 		EA73761C25321D2E00FE0740 /* NowPlayingMovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA73761925321D2D00FE0740 /* NowPlayingMovieResponse.swift */; };
 		EA73761D25321D2E00FE0740 /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA73761A25321D2E00FE0740 /* Dates.swift */; };
 		EA73761E25321D2E00FE0740 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA73761B25321D2E00FE0740 /* Results.swift */; };
-		EA73E3B5252D0921000D5A28 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA73E3B4252D0921000D5A28 /* UIViewController+Extensions.swift */; };
 		EA73E3CA252D0A72000D5A28 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA73E3C9252D0A72000D5A28 /* ListViewModel.swift */; };
 		EA73E3D2252D0A9F000D5A28 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA73E3D1252D0A9F000D5A28 /* MovieDetailViewController.swift */; };
 		EA73E3D7252D0AA6000D5A28 /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA73E3D6252D0AA6000D5A28 /* MovieDetailViewModel.swift */; };
@@ -75,7 +73,6 @@
 		EA54CA9A25332E5700E90604 /* MovieDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailModel.swift; sourceTree = "<group>"; };
 		EA54CA9F25332FD700E90604 /* ImageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageType.swift; sourceTree = "<group>"; };
 		EA54CAA4253334B000E90604 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
-		EA54CAA92533352D00E90604 /* UIIMage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIIMage+Extensions.swift"; sourceTree = "<group>"; };
 		EA54CABD25334B1200E90604 /* SearchResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		EA54CAC825334E6000E90604 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		EA6F012C253227E000523F76 /* UpcomingMovieResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingMovieResponse.swift; sourceTree = "<group>"; };
@@ -92,7 +89,6 @@
 		EA73761925321D2D00FE0740 /* NowPlayingMovieResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingMovieResponse.swift; sourceTree = "<group>"; };
 		EA73761A25321D2E00FE0740 /* Dates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
 		EA73761B25321D2E00FE0740 /* Results.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
-		EA73E3B4252D0921000D5A28 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		EA73E3C9252D0A72000D5A28 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		EA73E3D1252D0A9F000D5A28 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		EA73E3D6252D0AA6000D5A28 /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
@@ -242,9 +238,7 @@
 		EA73E3B9252D0923000D5A28 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				EA73E3B4252D0921000D5A28 /* UIViewController+Extensions.swift */,
 				EA54CAA4253334B000E90604 /* Date+Extensions.swift */,
-				EA54CAA92533352D00E90604 /* UIIMage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -651,7 +645,6 @@
 				EAE8886B2531EAE0008E7532 /* SimilarMoviesView.swift in Sources */,
 				EA73E3D2252D0A9F000D5A28 /* MovieDetailViewController.swift in Sources */,
 				EA70DB37252F0B7C007668EA /* MovieSliderModel.swift in Sources */,
-				EA54CAAA2533352D00E90604 /* UIIMage+Extensions.swift in Sources */,
 				EA73761C25321D2E00FE0740 /* NowPlayingMovieResponse.swift in Sources */,
 				EAB7FB422532100F008371B2 /* IMDBView.swift in Sources */,
 				EA70DB32252F0B20007668EA /* MovieCellModel.swift in Sources */,
@@ -668,7 +661,6 @@
 				EA73761E25321D2E00FE0740 /* Results.swift in Sources */,
 				EA73761D25321D2E00FE0740 /* Dates.swift in Sources */,
 				EA70DA8F252EFFD8007668EA /* MovieSliderView.swift in Sources */,
-				EA73E3B5252D0921000D5A28 /* UIViewController+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

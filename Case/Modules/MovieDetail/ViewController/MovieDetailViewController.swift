@@ -10,11 +10,8 @@ import Kingfisher
 
 class MovieDetailViewController: UIViewController {
 
-    var popRecognizer: InteractivePopRecognizer?
-
     var viewModel = MovieDetailViewModel()
-    var movieId: Int? // servis cagrilarinda kullanilacak
-
+    var movieId: Int?
 
     private let movieImageView: UIImageView = {
         let view = UIImageView()
@@ -30,7 +27,7 @@ class MovieDetailViewController: UIViewController {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.textColor = .darkText
-        view.font = UIFont.boldSystemFont(ofSize: 20)
+        view.font = UIFont.boldSystemFont(ofSize: 17)
 
         return view
     }()
@@ -38,7 +35,7 @@ class MovieDetailViewController: UIViewController {
     private let detailTextView: UITextView = {
         let view = UITextView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont.boldSystemFont(ofSize: 16)
+        view.font = UIFont.boldSystemFont(ofSize: 13)
         view.textColor = .darkGray
         view.isEditable = false
         view.isSelectable = false
@@ -66,7 +63,6 @@ class MovieDetailViewController: UIViewController {
 
         setUserInterface()
         setLightMode()
-
         requestMovieDetails()
         requestSimilarMovies()
 
@@ -79,13 +75,9 @@ class MovieDetailViewController: UIViewController {
     }
 }
 
-// MARK: - Actions
-extension MovieDetailViewController {
-
-}
-
 // MARK: - Auxiliary Methods
 extension MovieDetailViewController {
+
     func setUserInterface() {
         setSubviews()
         setMovieImageView()
@@ -141,7 +133,6 @@ extension MovieDetailViewController {
     }
 
     func setSimilarMoviesView() {
-
         NSLayoutConstraint.activate([
             similarMoviesView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
             similarMoviesView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
@@ -175,7 +166,9 @@ extension MovieDetailViewController {
     }
 }
 
+// MARK: - MovieDetailViewModelDelegate
 extension MovieDetailViewController: MovieDetailViewModelDelegate {
+
     func updateDetails() {
         titleLabel.text = "\(viewModel.movie?.title ?? "") (\(viewModel.movie?.date?.onlyYear ?? ""))"
         detailTextView.text = viewModel.movie?.detail
@@ -194,10 +187,8 @@ extension MovieDetailViewController: SimilarMoviesViewDelegate {
 
     func selected(movieId: Int?) {
         guard let movieId = movieId else { return }
-
         let destination = MovieDetailViewController()
         destination.movieId = movieId
         navigationController?.pushViewController(destination, animated: true)
     }
-
 }

@@ -12,14 +12,14 @@ protocol SearchResultViewDelegate: class {
 }
 
 class SearchResultView: UIView {
-
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-
+        
         return tableView
     }()
-
+    
     var movies: [MovieCellModel]? {
         didSet {
             DispatchQueue.main.async {
@@ -27,33 +27,34 @@ class SearchResultView: UIView {
             }
         }
     }
-
+    
     weak var delegate: SearchResultViewDelegate?
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-
+        
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        
         setTableView()
     }
-
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
 }
 
+// MARK: - Auxiliary Methods
 extension SearchResultView {
-
+    
     func setTableView() {
         addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-
+        
         NSLayoutConstraint.activate([
             tableView.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
             tableView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
@@ -63,23 +64,30 @@ extension SearchResultView {
     }
 }
 
+// MARK: - UITableViewDelegate, UITableViewDataSource 
 extension SearchResultView: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         movies?.count ?? 0
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         let movie = movies?[indexPath.row]
-        cell.textLabel?.text = movie?.title
-
+        var title = movie?.title ?? ""
+        if let date = movie?.date?.onlyYear {
+            title += " (\(date))"
+        }
+        cell.textLabel?.text = title
+        cell.accessoryType = .disclosureIndicator
+        
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let id = movies?[indexPath.row].id
         delegate?.updateResults(movieId: id)
     }
-
+    
 }

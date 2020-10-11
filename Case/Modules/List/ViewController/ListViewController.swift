@@ -51,23 +51,12 @@ class ListViewController: UIViewController {
         setUserInterface()
         setInteractiveRecognizer()
         setLightMode()
-
-        viewModel.delegate = self
-        viewModel.getNowPlaying()
-        viewModel.getUpcoming()
-
-        searchResultView.delegate = self
+        setViewModel()
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .darkContent
     }
-
-}
-
-// MARK: - Actions
-extension ListViewController {
-
 }
 
 // MARK: - Auxiliary Methods
@@ -109,6 +98,7 @@ extension ListViewController {
 
     func setSearchResultView() {
         view.addSubview(searchResultView)
+        searchResultView.delegate = self
         searchResultView.isHidden = true
 
         NSLayoutConstraint.activate([
@@ -136,6 +126,12 @@ extension ListViewController {
         searchResultView.isHidden = true
         searchBar.text = nil
         view.endEditing(true)
+    }
+
+    func setViewModel() {
+        viewModel.delegate = self
+        viewModel.getNowPlaying()
+        viewModel.getUpcoming()
     }
 }
 
@@ -177,7 +173,6 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         view.endEditing(true)
         searchResultView.isHidden = true
     }
-
 }
 
 // MARK: - UIGestureRecognizerDelegate
@@ -203,15 +198,16 @@ extension ListViewController: ListViewModelDelegate {
             self.tableView.reloadData()
         }
     }
+
     func updateSearchResult() {
-        print(":: \(viewModel.searchResult)")
         searchResultView.movies = viewModel.searchResult
         searchResultView.isHidden = viewModel.searchResult?.count == 0
     }
-
 }
 
+// MARK: - SearchResultViewDelegate
 extension ListViewController: SearchResultViewDelegate {
+
     func updateResults(movieId: Int?) {
         guard let id = movieId else { return }
         showMovieDetail(by: id)

@@ -14,15 +14,15 @@ protocol MovieDetailViewModelDelegate: class {
 
 final class MovieDetailViewModel {
 
+    private let service = Service()
+
     private(set) var movie: MovieDetailModel? {
         didSet {
             delegate?.updateDetails()
         }
     }
 
-    private let service = Service()
-
-    var similarMovies = [SimilarMovieModel]() {
+    private(set) var similarMovies = [SimilarMovieModel]() {
         didSet {
             delegate?.updateSimilarMoves()
         }
@@ -32,13 +32,11 @@ final class MovieDetailViewModel {
 
     func getMovieDetails(movieId: Int?) {
         service.getMovieDetails(movieId: movieId) { (response) in
-
             let movieDetail = MovieDetailModel(title: response?.title,
                                                detail: response?.overview,
                                                date: Date.date(from: response?.release_date),
                                                avarage: response?.vote_average,
                                                imageURL: URL(string: ImageType.big.url + (response?.backdrop_path ?? "")))
-
             self.movie = movieDetail
         }
     }
@@ -53,7 +51,6 @@ final class MovieDetailViewModel {
                                              imageURL: URL(string: ImageType.small.url + (result.backdrop_path ?? "")))
                 model.append(data)
             }
-
             self.similarMovies = model
         }
     }

@@ -15,7 +15,7 @@ struct MovieCellModel {
     let date: Date?
     let imageURL: URL?
 
-    init(id: Int?, title: String?, descrtiption: String?, date: Date?, imageURL: URL?) {
+    init(id: Int?, title: String?, descrtiption: String? = nil, date: Date?, imageURL: URL? = nil) {
         self.id = id
         self.title = title
         self.descrtiption = descrtiption
@@ -23,12 +23,5 @@ struct MovieCellModel {
         self.imageURL = imageURL
     }
 
-    init(id: Int?, title: String?) {
-        self.id = id
-        self.title = title
-        self.descrtiption = nil
-        self.date = nil
-        self.imageURL = nil
-    }
 }
 

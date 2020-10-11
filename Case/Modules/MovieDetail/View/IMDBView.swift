@@ -33,7 +33,7 @@ class IMDBView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.black.withAlphaComponent(0.2)
-        label.text = "1.1"
+        label.font = UIFont.systemFont(ofSize: 13)
 
         return label
     }()
@@ -42,7 +42,7 @@ class IMDBView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.black.withAlphaComponent(0.2)
-        label.text = "12.12.2012"
+        label.font = UIFont.systemFont(ofSize: 13)
 
         return label
     }()
@@ -81,7 +81,7 @@ class IMDBView: UIView {
 
 }
 
-// MARK: - Auxiliarh Methods
+// MARK: - Auxiliary Methods
 extension IMDBView {
 
     func setSubview() {
@@ -89,7 +89,6 @@ extension IMDBView {
         [starImageView, avarageLabel, dateLabel, imdbImageView].forEach { stackView.addArrangedSubview($0) }
 
         NSLayoutConstraint.activate([
-//            stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
             stackView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
             stackView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
