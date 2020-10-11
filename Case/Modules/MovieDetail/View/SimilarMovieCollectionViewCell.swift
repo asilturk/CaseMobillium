@@ -72,9 +72,7 @@ class SimilarMovieCollectionViewCell: UICollectionViewCell {
         didSet {
             titleLabel.text = model?.title
             dateLabel.text = model?.dateString
-            if let data = model?.imageData {
-                movieImageView.image = UIImage(data: data)
-            }
+            movieImageView.kf.setImage(with: model?.imageURL)
         }
     }
 

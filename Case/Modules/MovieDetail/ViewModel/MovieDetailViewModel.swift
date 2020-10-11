@@ -47,7 +47,9 @@ final class MovieDetailViewModel {
         service.getSimilarMovies(movieId: movieId) { (response) in
             var model = [SimilarMovieModel]()
             for result in response?.results ?? [] {
-                let data = SimilarMovieModel(imageData: nil, title: result.title, dateString: result.release_date)
+                let data = SimilarMovieModel(title: result.title,
+                                             dateString: result.release_date,
+                                             imageURL: URL(string: ImageType.big.url + (result.poster_path ?? "")))
                 model.append(data)
             }
 
@@ -55,4 +57,5 @@ final class MovieDetailViewModel {
         }
     }
 }
+
 
