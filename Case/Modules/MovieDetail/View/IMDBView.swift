@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol IMDBViewDelegate: class {
-    func imdbIconTapped()
-}
-
 class IMDBView: UIView {
 
     private let stackView: UIStackView = {
@@ -55,8 +51,6 @@ class IMDBView: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = #imageLiteral(resourceName: "icon-imdb.png")
-        imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imdbIconTapped)))
         imageView.contentMode = .scaleAspectFit
 
         return imageView
@@ -73,8 +67,6 @@ class IMDBView: UIView {
             avarageLabel.text = "\(avarage ?? 0.0)"
         }
     }
-
-    weak var delegate: IMDBViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -104,8 +96,5 @@ extension IMDBView {
         ])
     }
 
-    @objc func imdbIconTapped() {
-        delegate?.imdbIconTapped()
-    }
 }
 

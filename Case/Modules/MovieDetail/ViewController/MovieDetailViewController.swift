@@ -71,6 +71,7 @@ class MovieDetailViewController: UIViewController {
         requestSimilarMovies()
 
         viewModel.delegate = self
+        similarMoviesView.delegate = self
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -92,6 +93,7 @@ extension MovieDetailViewController {
         setDescriptionView()
         setImdbView()
         setSimilarMoviesView()
+        setImdbGesture()
     }
 
     func setSubviews() {
@@ -130,8 +132,6 @@ extension MovieDetailViewController {
     }
 
     func setImdbView() {
-        imdbView.delegate = self
-
         NSLayoutConstraint.activate([
             imdbView.bottomAnchor.constraint(equalTo: similarMoviesView.topAnchor, constant: -16),
             imdbView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
@@ -162,6 +162,17 @@ extension MovieDetailViewController {
     func requestSimilarMovies() {
         viewModel.getSimilarMovies(movieId: movieId)
     }
+
+    func setImdbGesture() {
+        imdbView.isUserInteractionEnabled = true
+        imdbView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openImdbWebsite)))
+    }
+
+    @objc func openImdbWebsite() {
+        if let id = movieId, let url = URL(string: "https://www.themoviedb.org/redirect?external_source=\(id)") {
+            UIApplication.shared.open(url)
+        }
+    }
 }
 
 // MARK: - UIGestureRecognizerDelegate
@@ -177,9 +188,9 @@ extension MovieDetailViewController: UIGestureRecognizerDelegate {
 
 extension MovieDetailViewController: MovieDetailViewModelDelegate {
     func updateDetails() {
-        titleLabel.text = viewModel.movie?.title
+        titleLabel.text = "\(viewModel.movie?.title ?? "") (\(viewModel.movie?.date?.onlyYear ?? ""))"
         detailTextView.text = viewModel.movie?.detail
-        imdbView.dateString = viewModel.movie?.dateString
+        imdbView.dateString = viewModel.movie?.date?.shortDate
         imdbView.avarage = viewModel.movie?.avarage
         movieImageView.kf.setImage(with: viewModel.movie?.imageURL)
     }
@@ -187,14 +198,17 @@ extension MovieDetailViewController: MovieDetailViewModelDelegate {
     func updateSimilarMoves() {
         similarMoviesView.similarMovies = viewModel.similarMovies
     }
-
-
 }
 
-// MARK: - IMDBViewDelegate
-extension MovieDetailViewController: IMDBViewDelegate {
-    func imdbIconTapped() {
-        // TODO: open a web browser
-        print(" TODO: open a web browser")
+// MARK: - SimilarMoviesViewDelegate
+extension MovieDetailViewController: SimilarMoviesViewDelegate {
+
+    func selected(movieId: Int?) {
+        guard let movieId = movieId else { return }
+
+        let destination = MovieDetailViewController()
+        destination.movieId = movieId
+        navigationController?.pushViewController(destination, animated: true)
     }
+
 }

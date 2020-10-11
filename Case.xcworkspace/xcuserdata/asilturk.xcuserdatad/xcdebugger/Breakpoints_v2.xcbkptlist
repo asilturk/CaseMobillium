@@ -30,8 +30,8 @@
             filePath = "Case/Modules/MovieDetail/ViewModel/MovieDetailViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "getSimilarMovies(movieId:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -52,7 +52,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "DDC94392-FF80-4939-8097-453460A465E0 - 673e07ebc1ee7d36"
+                  uuid = "DDC94392-FF80-4939-8097-453460A465E0 - 673e07ebc1ee7c5d"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -62,12 +62,12 @@
                   urlString = "file:///Users/asilturk/Desktop/Case/Case/Modules/MovieDetail/ViewModel/MovieDetailViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
                   offsetFromSymbolStart = "47">
                </Location>
                <Location
-                  uuid = "DDC94392-FF80-4939-8097-453460A465E0 - b465ff360a66192a"
+                  uuid = "DDC94392-FF80-4939-8097-453460A465E0 - b465ff360a661803"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -77,11 +77,27 @@
                   urlString = "file:///Users/asilturk/Desktop/Case/Case/Modules/MovieDetail/ViewModel/MovieDetailViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "228">
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "307">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "953E3A88-A4FE-4176-9775-FB41F9C655D5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Case/Modules/MovieDetail/ViewController/MovieDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "openImdbWebsite()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

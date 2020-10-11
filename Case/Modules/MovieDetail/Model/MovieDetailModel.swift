@@ -10,7 +10,7 @@ import Foundation
 struct MovieDetailModel {
     let title: String?
     let detail: String?
-    let dateString: String?
+    let date: Date?
     let avarage: Double?
     let imageURL: URL?
 }

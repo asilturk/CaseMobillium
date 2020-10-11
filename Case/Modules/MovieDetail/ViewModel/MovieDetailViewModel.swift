@@ -35,7 +35,7 @@ final class MovieDetailViewModel {
 
             let movieDetail = MovieDetailModel(title: response?.title,
                                                detail: response?.overview,
-                                               dateString: Date.date(from: response?.release_date)?.shortDate,
+                                               date: Date.date(from: response?.release_date),
                                                avarage: response?.vote_average,
                                                imageURL: URL(string: ImageType.big.url + (response?.backdrop_path ?? "")))
 
@@ -47,7 +47,8 @@ final class MovieDetailViewModel {
         service.getSimilarMovies(movieId: movieId) { (response) in
             var model = [SimilarMovieModel]()
             for result in response?.results ?? [] {
-                let data = SimilarMovieModel(title: result.title,
+                let data = SimilarMovieModel(id: result.id,
+                                             title: result.title,
                                              dateString: result.release_date,
                                              imageURL: URL(string: ImageType.small.url + (result.backdrop_path ?? "")))
                 model.append(data)

@@ -4,8 +4,12 @@
 //
 //  Created by Burak Furkan Asilturk on 10.10.2020.
 //
-
+    
 import UIKit
+
+protocol SimilarMoviesViewDelegate: class {
+    func selected(movieId: Int?)
+}
 
 class SimilarMoviesView: UIView {
 
@@ -48,6 +52,8 @@ class SimilarMoviesView: UIView {
             }
         }
     }
+
+    weak var delegate: SimilarMoviesViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -123,6 +129,12 @@ extension SimilarMoviesView: UICollectionViewDelegate, UICollectionViewDataSourc
         cell.model = model
 
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let model = similarMovies[indexPath.row]
+        delegate?.selected(movieId: model.id)
     }
 
 
