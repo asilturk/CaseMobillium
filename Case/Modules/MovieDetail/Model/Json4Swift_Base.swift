@@ -12,29 +12,26 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct UpcomingMovieResponse : Codable {
-	let results : [Results]?
+struct SimilarMovieResponse : Codable {
 	let page : Int?
-	let total_results : Int?
-	let dates : Dates?
+	let results : [Results]?
 	let total_pages : Int?
+	let total_results : Int?
 
 	enum CodingKeys: String, CodingKey {
 
-		case results = "results"
 		case page = "page"
-		case total_results = "total_results"
-		case dates = "dates"
+		case results = "results"
 		case total_pages = "total_pages"
+		case total_results = "total_results"
 	}
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		results = try values.decodeIfPresent([Results].self, forKey: .results)
 		page = try values.decodeIfPresent(Int.self, forKey: .page)
-		total_results = try values.decodeIfPresent(Int.self, forKey: .total_results)
-		dates = try values.decodeIfPresent(Dates.self, forKey: .dates)
+		results = try values.decodeIfPresent([Results].self, forKey: .results)
 		total_pages = try values.decodeIfPresent(Int.self, forKey: .total_pages)
+		total_results = try values.decodeIfPresent(Int.self, forKey: .total_results)
 	}
 
 }

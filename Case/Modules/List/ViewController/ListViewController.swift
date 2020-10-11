@@ -116,12 +116,12 @@ extension ListViewController: UISearchBarDelegate {
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.dummyCellDatas.count
+        return viewModel.movieArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.typeName, for: indexPath) as! MovieTableViewCell
-        let model = viewModel.dummyCellDatas[indexPath.row]
+        let model = viewModel.movieArray[indexPath.row]
         cell.model = model
 
         return cell
@@ -129,8 +129,9 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let model = viewModel.movieArray[indexPath.row]
         let destination = MovieDetailViewController()
-        destination.movieId = 0 // movie id modelden alinip buraya verilecek
+        destination.movieId = model.id
         navigationController?.pushViewController(destination, animated: true)
     }
 

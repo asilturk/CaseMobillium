@@ -16,4 +16,6 @@ struct MovieDetailViewModel {
         SimilarMovieModel(imageData: nil, title: "deneme 4", dateString: "2021"),
         SimilarMovieModel(imageData: Demo.s.image, title: "deneme 5", dateString: "2021"),
     ]
+
+    
 }

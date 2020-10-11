@@ -16,15 +16,19 @@ final class ListViewModel {
 
     private let service = Service()
 
-    private(set) var nowPlayingMovie: NowPlayingMovie? {
+    private(set) var movieArray = [MovieCellModel]() {
+        didSet {
+            delegate?.updateTableView()
+        }
+    }
+
+    private(set) var nowPlayingMovie: NowPlayingMovieResponse? {
         didSet {
             delegate?.updateSliderView()
         }
     }
 
     weak var delegate: ListViewModelDelegate?
-
-    private(set) var dummyCellDatas = [MovieCellModel]()
 
 }
 
@@ -39,11 +43,13 @@ extension ListViewModel {
 
     func getUpcoming() {
         service.getMoviesUpcoming { (movie) in
+            var model = [MovieCellModel]()
             for result in movie?.results ?? [] {
-                let data = MovieCellModel(title: result.title, descrtiption: result.overview, dateText: result.release_date, imageData: nil)
-                self.dummyCellDatas.append(data)
+                let data = MovieCellModel(id: result.id, title: result.title, descrtiption: result.overview, dateText: result.release_date, imageData: nil)
+                model.append(data)
             }
-            self.delegate?.updateTableView()
+
+            self.movieArray = model
         }
     }
     

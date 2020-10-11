@@ -12,7 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct UpcomingMovieResponse : Codable {
+struct NowPlayingMovieResponse : Codable {
 	let results : [Results]?
 	let page : Int?
 	let total_results : Int?

@@ -44,15 +44,13 @@ class MovieSliderView: UIView {
         return imageView
     }()
 
-    var model: NowPlayingMovie? {
+    var model: NowPlayingMovieResponse? {
         didSet {
             layoutSubviews()
             pageControl.numberOfPages = model?.results?.count ?? 0
             updateTitleLabel()
         }
     }
-
-
 
     override func layoutSubviews() {
         super.layoutSubviews()

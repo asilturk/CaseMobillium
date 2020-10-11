@@ -12,29 +12,20 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct UpcomingMovieResponse : Codable {
-	let results : [Results]?
-	let page : Int?
-	let total_results : Int?
-	let dates : Dates?
-	let total_pages : Int?
+struct Spoken_languages : Codable {
+	let iso_639_1 : String?
+	let name : String?
 
 	enum CodingKeys: String, CodingKey {
 
-		case results = "results"
-		case page = "page"
-		case total_results = "total_results"
-		case dates = "dates"
-		case total_pages = "total_pages"
+		case iso_639_1 = "iso_639_1"
+		case name = "name"
 	}
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		results = try values.decodeIfPresent([Results].self, forKey: .results)
-		page = try values.decodeIfPresent(Int.self, forKey: .page)
-		total_results = try values.decodeIfPresent(Int.self, forKey: .total_results)
-		dates = try values.decodeIfPresent(Dates.self, forKey: .dates)
-		total_pages = try values.decodeIfPresent(Int.self, forKey: .total_pages)
+		iso_639_1 = try values.decodeIfPresent(String.self, forKey: .iso_639_1)
+		name = try values.decodeIfPresent(String.self, forKey: .name)
 	}
 
 }

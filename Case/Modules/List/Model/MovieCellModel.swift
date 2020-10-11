@@ -8,6 +8,7 @@
 import Foundation
 
 struct MovieCellModel {
+    let id: Int?
     let title: String?
     let descrtiption: String?
     let dateText: String?
